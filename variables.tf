@@ -18,8 +18,8 @@ variable "role_assignments" {
     delegated_managed_identity_resource_id = optional(string, null) # The ID of the delegated managed identity resource. Changing requires recreation.
     description                            = optional(string, null) # The description of the role assignment. Changing requires recreation.
     name                                   = optional(string, null) # If not provided, a unique UUID/GUID will be generated.
-    principal_id                           = string                 # The ID of the principal (user, group, or service principal) to assign the role to. Changing requires recreation.
-    principal_type                         = optional(string, null) # User, Group, ServicePrincipal.
+    principal_id                           = string                 # The user, group, or service principal object ID to assign role. Changing requires recreation.
+    principal_type                         = string                 # User, Group, ServicePrincipal. Changing requires recreation. This is required because it could fail on ABAC rules that filter base don this field.
     role_definition_id                     = optional(string, null) # The scoped ID of the role definition. Changing requires recreation.
     role_definition_name                   = optional(string, null) # The name of a built-in role. Changing requires recreation.
     scope                                  = string                 # The scope resource ID. Changing requires recreation.
